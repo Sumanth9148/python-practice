@@ -51,30 +51,50 @@
 
 #valid anagram
 
-def valid_anagram(s: str, t: str) -> bool:
-    if len(s)!=len(t):
-        return False
+# def valid_anagram(s: str, t: str) -> bool:
+#     if len(s)!=len(t):
+#         return False
     
-    s_count={}
+#     s_count={}
 
-    for ch in s:
-        s_count[ch]=s_count.get(ch,0)+1
+#     for ch in s:
+#         s_count[ch]=s_count.get(ch,0)+1
 
-    #decrease that s_count now
+#     #decrease that s_count now
 
-    for ch in t:
-        if ch not in s_count:
-            return False
+#     for ch in t:
+#         if ch not in s_count:
+#             return False
 
-        s_count[ch]-=1
+#         s_count[ch]-=1
 
-        if s_count[ch]<0:
-            return False
+#         if s_count[ch]<0:
+#             return False
 
-    return True
+#     return True
 
 
 
-print(valid_anagram(s="anagram", t="nagaram"))
+# print(valid_anagram(s="anagram", t="nagaram"))
 
-print(valid_anagram(s="rat", t="car"))
+# print(valid_anagram(s="rat", t="car"))
+
+
+
+#group anagrams
+
+def group_anagrams(strs: list[str]) -> list[list[str]]:
+    groups={}
+
+    for word in strs:
+        key="".join(sorted(word))
+
+        if key not in groups:
+            groups[key]=[]
+
+        groups[key].append(word)  
+
+    return list(groups.values())    
+
+
+print(group_anagrams(strs=["eat","tea","tan","ate","nat","bat"]))
