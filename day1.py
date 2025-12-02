@@ -2,14 +2,14 @@
 
 # def two_sum(nums:list[int],target:int) -> list[int]:
 #     prevmap={}
-
 #     for i,num in enumerate(nums):
 #         diff=target-num
 #         if diff in prevmap:
 #             return [prevmap[diff],i]
 #         prevmap[num]=i
 
-#     return []
+#     return []    
+
 
 # print(two_sum(nums=[2,7,11,15], target=9)) 
 
@@ -42,8 +42,10 @@
 #                 l+=1
 #                 while l<r and nums[l]==nums[l-1]:
 #                     l+=1
+#     return res                
 
-#     return res
+
+
 
 # print(three_sum(nums=[-1,0,1,2,-1,-4])) 
 
@@ -55,23 +57,22 @@
 #     if len(s)!=len(t):
 #         return False
     
-#     s_count={}
+#     scount={}
 
 #     for ch in s:
-#         s_count[ch]=s_count.get(ch,0)+1
-
-#     #decrease that s_count now
+#         scount[ch]=scount.get(ch,0)+1
 
 #     for ch in t:
-#         if ch not in s_count:
+#         if ch not in scount:
 #             return False
 
-#         s_count[ch]-=1
+#         scount[ch]-=1
 
-#         if s_count[ch]<0:
-#             return False
+#     if scount[ch]<0:
+#         return False
 
-#     return True
+#     return True        
+
 
 
 
@@ -84,17 +85,16 @@
 #group anagrams
 
 def group_anagrams(strs: list[str]) -> list[list[str]]:
-    groups={}
+    grous={}
 
     for word in strs:
         key="".join(sorted(word))
 
-        if key not in groups:
-            groups[key]=[]
-
-        groups[key].append(word)  
-
-    return list(groups.values())    
+        if key not in grous:
+            grous[key]=[]
+        grous[key].append(word)
+    return list(grous.values())        
+  
 
 
 print(group_anagrams(strs=["eat","tea","tan","ate","nat","bat"]))
