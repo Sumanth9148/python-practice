@@ -63,24 +63,46 @@
 
 # product of array except self
 
-def product_of_array_except_self(nums: list[int]) -> list[int]:
-    n = len(nums)
+# def product_of_array_except_self(nums: list[int]) -> list[int]:
+#     n = len(nums)
 
-    prefix=[1]*n
-    sufix=[1]*n
-    ans=[0]*n
+#     prefix=[1]*n
+#     sufix=[1]*n
+#     ans=[0]*n
 
-    for i in range(1,n):
-        prefix[i]=prefix[i-1]*nums[i-1]
-
-
-    for i in range(n-2,-1,-1):
-        sufix[i]=sufix[i+1]*nums[i+1]
-
-    for i in range(n):
-        ans[i]=prefix[i]*sufix[i]
-
-    return ans 
+#     for i in range(1,n):
+#         prefix[i]=prefix[i-1]*nums[i-1]
 
 
-print(product_of_array_except_self(nums=[1,2,3,4]))
+#     for i in range(n-2,-1,-1):
+#         sufix[i]=sufix[i+1]*nums[i+1]
+
+#     for i in range(n):
+#         ans[i]=prefix[i]*sufix[i]
+
+#     return ans 
+
+
+# print(product_of_array_except_self(nums=[1,2,3,4]))
+
+
+
+# find peak element
+
+def find_peak_element(nums: list[int]) -> int:
+    l,r=0,len(nums)-1
+
+    while l<r:
+        m=(l+r)//2
+
+        if m>0 and nums[m]<nums[m-1]:
+            r=m-1
+        elif m<len(nums)-1 and nums[m]<nums[m+1]:
+            l=m+1
+        else:
+            return m
+        
+
+print(find_peak_element(nums=[1,2,3,1]))
+
+print(find_peak_element(nums=[1,2,1,3,5,6,4]))        
