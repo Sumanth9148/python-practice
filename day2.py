@@ -47,11 +47,40 @@
 # print(add_two_numbers(l1=[2,4,3], l2=[5,6,4]))  
 
 
+
+
 #kth largest element
 
-def kth_largest_element_in_an_array(nums: list[int], k: int) -> int:
-    nums.sort(reverse=True)
-    return nums[k-1]
+# def kth_largest_element_in_an_array(nums: list[int], k: int) -> int:
+#     nums.sort(reverse=True)
+#     return nums[k-1]
 
-print(kth_largest_element_in_an_array(nums=[3,2,1,5,6,4], k=2)) 
-print(kth_largest_element_in_an_array(nums=[3,2,3,1,2,4,5,5,6],k=4)) 
+# print(kth_largest_element_in_an_array(nums=[3,2,1,5,6,4], k=2)) 
+# print(kth_largest_element_in_an_array(nums=[3,2,3,1,2,4,5,5,6],k=4)) 
+
+
+
+
+# product of array except self
+
+def product_of_array_except_self(nums: list[int]) -> list[int]:
+    n = len(nums)
+
+    prefix=[1]*n
+    sufix=[1]*n
+    ans=[0]*n
+
+    for i in range(1,n):
+        prefix[i]=prefix[i-1]*nums[i-1]
+
+
+    for i in range(n-2,-1,-1):
+        sufix[i]=sufix[i+1]*nums[i+1]
+
+    for i in range(n):
+        ans[i]=prefix[i]*sufix[i]
+
+    return ans 
+
+
+print(product_of_array_except_self(nums=[1,2,3,4]))
