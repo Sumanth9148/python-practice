@@ -1,22 +1,12 @@
 # rotate array
 
-# def rotate_array(nums: list[int], k: int) -> list[int]:
-#     n=len(nums)
-#     k=k%n
+def rotate_array(nums: list[int], k: int) -> list[int]:
+    n=len(nums)
+    k=k%n
 
-#     def rev(l,r):
-#         while l<r:
-#             nums[l],nums[r]=nums[r],nums[l]
-#             l+=1
-#             r-=1
+    return nums[-k:]+nums[:-k]
 
-#     rev(0,n-1)
-
-#     rev(0,k-1)
-
-#     rev(k,n-1)
-
-#     return nums        
+          
   
 
 # print(rotate_array(nums=[1,2,3,4,5,6,7], k=3))  

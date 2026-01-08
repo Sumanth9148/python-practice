@@ -21,29 +21,29 @@
 
 #trapping rain water
 
-# def trapping_rain_water(height: list[int]) -> int:
-#     n=len(height)
+def trapping_rain_water(height: list[int]) -> int:
+    lm=0
+    rm=0
+    ans=0
 
-#     lm=[0]*n
-#     rm=[0]*n
-#     ans=0
+    l,r=0,len(height)-1
 
-#     lm[0]=height[0]
-#     for i in range(1,n):
-#         lm[i]=max(lm[i-1],height[i])
+    while l<r:
+        lm=max(lm,height[l])
+        rm=max(rm,height[r])
 
-#     rm[n-1]=height[n-1]
-#     for i in range(n-2,-1,-1):
-#         rm[i]=max(rm[i+1],height[i])
+        if lm<rm:
+            ans+=(lm-height[l])
+            l+=1
+        else:
+            ans+=(rm-height[r])
+            r-=1
 
-#     for i in range(n):
-#         ans+=min(lm[i],rm[i])-height[i]
+    return ans        
 
-#     return ans
+print(trapping_rain_water(height=[0,1,0,2,1,0,1,3,2,1,2,1]))     
 
-# print(trapping_rain_water(height=[0,1,0,2,1,0,1,3,2,1,2,1]))     
-
-# print(trapping_rain_water(height=[4,2,0,3,2,5]))
+print(trapping_rain_water(height=[4,2,0,3,2,5]))
 
 
 
@@ -103,49 +103,49 @@
 
 #spiral matrix
 
-def spiral_matrix(matrix: list[list[int]]) -> list[int]:
-    if not matrix or not matrix[0]:
-        return []
+# def spiral_matrix(matrix: list[list[int]]) -> list[int]:
+#     if not matrix or not matrix[0]:
+#         return []
     
-    res=[]
-    l,r=0,len(matrix)-1
-    t,b=0,len(matrix[0])-1
+#     res=[]
+#     l,r=0,len(matrix)-1
+#     t,b=0,len(matrix[0])-1
 
-    while l<=r and t<=b:
+#     while l<=r and t<=b:
 
-        for i in range(t,b+1):
-            res.append(matrix[l][i])
+#         for i in range(t,b+1):
+#             res.append(matrix[l][i])
 
-        for i in range(l+1,r+1):
-            res.append(matrix[i][b])
+#         for i in range(l+1,r+1):
+#             res.append(matrix[i][b])
 
-        for i in range(b-1,t-1,-1):
-            res.append(matrix[r][i])
+#         for i in range(b-1,t-1,-1):
+#             res.append(matrix[r][i])
 
-        for i in range(r-1,l,-1):
-            res.append(matrix[i][t])
+#         for i in range(r-1,l,-1):
+#             res.append(matrix[i][t])
 
-        l+=1
-        r-=1
-        t+=1
-        b-=1
+#         l+=1
+#         r-=1
+#         t+=1
+#         b-=1
 
-    return res
+#     return res
 
-print(spiral_matrix(matrix=[[1,2,3],[4,5,6],[7,8,9]]))    
+# print(spiral_matrix(matrix=[[1,2,3],[4,5,6],[7,8,9]]))    
 
 
 
 #maximum subarray sum
 
-def maximum_subarray(nums: list[int]) -> int:
-    max_sum=nums[0]
-    curr_sum=nums[0]
+# def maximum_subarray(nums: list[int]) -> int:
+#     max_sum=nums[0]
+#     curr_sum=nums[0]
 
-    for i in range(1,len(nums)):
-        curr_sum=max(nums[i],nums[i]+curr_sum)
-        max_sum=max(curr_sum,max_sum)
+#     for i in range(1,len(nums)):
+#         curr_sum=max(nums[i],nums[i]+curr_sum)
+#         max_sum=max(curr_sum,max_sum)
 
-    return max_sum
+#     return max_sum
 
-print(maximum_subarray(nums=[-2,1,-3,4,-1,2,1,-5,4]))    
+# print(maximum_subarray(nums=[-2,1,-3,4,-1,2,1,-5,4]))    
